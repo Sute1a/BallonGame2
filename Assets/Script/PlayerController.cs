@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float limitPosX = 8.385f;
     private float limitPosY = 4.5f;
 
+    public bool isFirstGenerateBallon;
+
     private float scale;
 
     public float moveSpeed;
@@ -36,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Header("Linecast用　地面判定レイヤー")]
     private LayerMask groundLayer;
+
+    [SerializeField]
+    private StartChecker startChecker;
 
     void Start()
     {
@@ -147,6 +152,15 @@ public class PlayerController : MonoBehaviour
             yield break;
         }
         isGenerating = true;
+
+        if (isFirstGenerateBallon == false)
+        {
+            isFirstGenerateBallon = true;
+
+            Debug.Log("初回のバルーン生成");
+
+            startChecker.SetInitialSpeed();
+        }
 
         if (ballons[0] == null)
         {
