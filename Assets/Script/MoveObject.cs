@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("移動速度")]
+    public float moveSpeed;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position += new Vector3(-moveSpeed, 0, 0);
+
+        if (transform.position.x <= -14.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
