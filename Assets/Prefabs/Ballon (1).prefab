@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2710485163136576173}
   - component: {fileID: 2710485163136576175}
   - component: {fileID: 2710485163136576172}
+  - component: {fileID: 3539607098062409796}
   m_Layer: 0
   m_Name: Ballon (1)
   m_TagString: Untagged
@@ -99,3 +100,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.077601805, y: -1.0937599}
   m_Size: {x: 6.452048, y: 21.115559}
   m_Direction: 0
+--- !u!114 &3539607098062409796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2710485163136576210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806ecccd8c51c43e5a06b68bb582a988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

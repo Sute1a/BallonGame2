@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isGenerating;
 
+    public float knockbackPower;
+
     [SerializeField, Header("Linecast用　地面判定レイヤー")]
     private LayerMask groundLayer;
 
@@ -165,13 +167,38 @@ public class PlayerController : MonoBehaviour
         if (ballons[0] == null)
         {
             ballons[0] = Instantiate(ballonPrefab, ballonTrans[0]);
+
+            ballons[0].GetComponent<Ballon>().SetUpBallon(this);
         }
         else
         {
             ballons[1] = Instantiate(ballonPrefab, ballonTrans[1]);
+
+            ballons[1].GetComponent<Ballon>().SetUpBallon(this);
         }
         yield return new WaitForSeconds(generateTime);
 
         isGenerating = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            Vector3 direction = (transform.position - col.transform.position).normalized;
+
+            transform.position += direction * knockbackPower;
+        }
+    }
+    public void DestroyBallon()
+    {
+        if (ballons[1] != null)
+        {
+            Destroy(ballons[1]);
+        }
+        else if (ballons[0] != null)
+        {
+            Destroy(ballons[0]);
+        } 
     }
 }

@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 87815651}
   m_Layer: 0
   m_Name: Eagle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -826,6 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 899220678}
+  - component: {fileID: 899220679}
   m_Layer: 0
   m_Name: Ballon_Tran_0
   m_TagString: Untagged
@@ -847,6 +848,18 @@ Transform:
   m_Father: {fileID: 1286889440}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899220679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899220677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806ecccd8c51c43e5a06b68bb582a988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &938116014
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1275329984}
+  - component: {fileID: 1275329985}
   m_Layer: 0
   m_Name: Ballon_Tran_1
   m_TagString: Untagged
@@ -1003,6 +1017,18 @@ Transform:
   m_Father: {fileID: 1286889440}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 40}
+--- !u!114 &1275329985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275329983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806ecccd8c51c43e5a06b68bb582a988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1286889437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1199,7 @@ MonoBehaviour:
   ballonPrefab: {fileID: 7132312022476929567, guid: 3c174f29475bd40ba897057c76e4dcc1, type: 3}
   generateTime: 2
   isGenerating: 0
+  knockbackPower: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
