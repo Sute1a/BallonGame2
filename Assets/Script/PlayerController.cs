@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isGenerating;
 
+    public int coinPoint;
+
     public float knockbackPower;
 
     [SerializeField, Header("Linecast用　地面判定レイヤー")]
@@ -200,5 +202,15 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(ballons[0]);
         } 
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Coin")
+        {
+            coinPoint += col.gameObject.GetComponent<Coin>().point;
+
+            Destroy(col.gameObject);
+        }    
     }
 }
