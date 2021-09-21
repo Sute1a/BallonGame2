@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     public int coinPoint;
 
+    public UIManager uiManager;
+
     public float knockbackPower;
 
     [SerializeField, Header("Linecast用　地面判定レイヤー")]
@@ -209,6 +211,8 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "Coin")
         {
             coinPoint += col.gameObject.GetComponent<Coin>().point;
+
+            uiManager.UpdateDisplayScore(coinPoint);
 
             Destroy(col.gameObject);
         }    
