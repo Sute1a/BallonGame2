@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float limitPosX = 8.385f;
     private float limitPosY = 4.5f;
 
+    private bool isGameOver = false;
+
     public bool isFirstGenerateBallon;
 
     private float scale;
@@ -106,6 +108,10 @@ public class PlayerController : MonoBehaviour
     
     private void FixedUpdate()
     {
+        if (isGameOver == true)
+        {
+            return;
+        }
         Move();
     }
     void Move()
@@ -216,5 +222,14 @@ public class PlayerController : MonoBehaviour
 
             Destroy(col.gameObject);
         }    
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+
+        Debug.Log(isGameOver);
+
+        uiManager.DisplayGameOverInfo();
     }
 }
