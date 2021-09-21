@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8450112706636361654}
-  - component: {fileID: 8450112706636361653}
+  - component: {fileID: -4488294998562750234}
   m_Layer: 8
   m_Name: AerialFloor_Mid
   m_TagString: Untagged
@@ -187,7 +187,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8450112706636361653
+--- !u!114 &-4488294998562750234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
