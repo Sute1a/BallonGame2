@@ -14,6 +14,8 @@ public class FloorGenerator : MonoBehaviour
     public float waitTime;
     private float timer;
 
+    private GameDirector gameDirector;
+
     void Update()
     {
         timer += Time.deltaTime;
@@ -34,5 +36,12 @@ public class FloorGenerator : MonoBehaviour
 
         obj.transform.position = new Vector2(obj.transform.position.x,
             obj.transform.position.y + randomPoy);
+
+        gameDirector.GenerateCount++;
+    }
+
+    public void SetUpGenerator(GameDirector gameDirector)
+    {
+        this.gameDirector = gameDirector;
     }
 }
