@@ -13,6 +13,9 @@ public class GameDirector : MonoBehaviour
     [SerializeField]
     private FloorGenerator[] floorGenerators;
 
+    [SerializeField]
+    private RandomObjectGenerator[] randomObjectGenerators;
+
     private bool isSetUp;
 
     private bool isGameUp;
@@ -48,7 +51,7 @@ public class GameDirector : MonoBehaviour
 
         SetUpFloorGenerators();
 
-        Debug.Log("生成停止");
+        StopGenerators();
     }
     private void SetUpFloorGenerators()
     {
@@ -63,7 +66,7 @@ public class GameDirector : MonoBehaviour
         {
             isSetUp = true;
 
-            Debug.Log("生成スタート");
+            ActivateGenerators();
         }
     }
 
@@ -78,6 +81,31 @@ public class GameDirector : MonoBehaviour
     {
         isGameUp = true;
 
-        Debug.Log("生成停止");
+        StopGenerators();
     }
+
+    private void StopGenerators()
+    {
+        for(int i =0; i<randomObjectGenerators.Length; i++)
+        {
+            randomObjectGenerators[i].SwitchActivation(false);
+        }
+            for(int i=0; i<floorGenerators.Length; i++)
+        {
+            floorGenerators[i].SwitchActivatiion(false);
+        }
+    }
+
+    private void ActivateGenerators()
+    {
+        for(int i=0; i < randomObjectGenerators.Length; i++)
+        {
+            randomObjectGenerators[i].SwitchActivation(true);
+        }
+        for(int i=0; i < floorGenerators.Length; i++)
+        {
+            floorGenerators[i].SwitchActivatiion(true);
+        }
+    }
+
 }

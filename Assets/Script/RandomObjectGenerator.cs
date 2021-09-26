@@ -17,6 +17,10 @@ public class RandomObjectGenerator : MonoBehaviour
 
     private float timer;
 
+    private bool isActivate;
+
+    private GameDirector gameDirector;
+
     void Start()
     {
         SetGenerateTime(); 
@@ -29,6 +33,11 @@ public class RandomObjectGenerator : MonoBehaviour
 
     void Update()
     {
+        if (isActivate == false)
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
 
         if (timer >= waitTime)
@@ -51,5 +60,10 @@ public class RandomObjectGenerator : MonoBehaviour
             obj.transform.position.y + randomPosY);
 
         SetGenerateTime();
+    }
+
+    public void SwitchActivation(bool isSwitch)
+    {
+        isActivate = isSwitch;
     }
 }

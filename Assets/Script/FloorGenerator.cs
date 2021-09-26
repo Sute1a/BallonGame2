@@ -16,8 +16,15 @@ public class FloorGenerator : MonoBehaviour
 
     private GameDirector gameDirector;
 
+    private bool isActivate;
+
     void Update()
     {
+        if (isActivate == false)
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
 
         if (timer >= waitTime)
@@ -43,5 +50,10 @@ public class FloorGenerator : MonoBehaviour
     public void SetUpGenerator(GameDirector gameDirector)
     {
         this.gameDirector = gameDirector;
+    }
+
+    public void SwitchActivatiion(bool isSwitch)
+    {
+        isActivate = isSwitch;
     }
 }
