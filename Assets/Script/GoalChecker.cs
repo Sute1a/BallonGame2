@@ -11,6 +11,8 @@ public class GoalChecker : MonoBehaviour
 
     private bool isGoal;
 
+    private GameDirector gameDirector;
+
     void Update()
     {
         if (transform.position.x > stopPos)
@@ -31,6 +33,13 @@ public class GoalChecker : MonoBehaviour
                 <PlayerController>();
 
             playerController.uiManager.GenerateResultPopUp(playerController.coinPoint);
+
+            gameDirector.GoalClear();
         }
+    }
+
+    public void SetUpGoalHouse(GameDirector gameDirector)
+    {
+        this.gameDirector = gameDirector;
     }
 }

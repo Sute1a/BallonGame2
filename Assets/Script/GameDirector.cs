@@ -82,6 +82,8 @@ public class GameDirector : MonoBehaviour
         GoalChecker goalHouse = Instantiate(goalHousePrefab);
 
         Debug.Log("ゴール地点　生成");
+
+        goalHouse.SetUpGoalHouse(this);
     }
 
     public void GameUp()
@@ -113,6 +115,11 @@ public class GameDirector : MonoBehaviour
         {
             floorGenerators[i].SwitchActivatiion(true);
         }
+    }
+
+    public void GoalClear()
+    {
+        StartCoroutine(audioManager.PlayBGM(2));
     }
 
 }
