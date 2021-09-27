@@ -16,6 +16,9 @@ public class GameDirector : MonoBehaviour
     [SerializeField]
     private RandomObjectGenerator[] randomObjectGenerators;
 
+    [SerializeField]
+    private AudioManager audioManager;
+
     private bool isSetUp;
 
     private bool isGameUp;
@@ -46,6 +49,8 @@ public class GameDirector : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(audioManager.PlayBGM(0));
+
         isGameUp = false;
         isSetUp = false;
 
@@ -67,6 +72,8 @@ public class GameDirector : MonoBehaviour
             isSetUp = true;
 
             ActivateGenerators();
+
+            StartCoroutine(audioManager.PlayBGM(1));
         }
     }
 
