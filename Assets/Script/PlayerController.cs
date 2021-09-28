@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -62,6 +63,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject getCoineffectPrefab;
 
+    [SerializeField]
+    private Joystick joystick;
+
+    [SerializeField]
+    private Button btnJump;
+
+    [SerializeField]
+    private Button btnDetach;
+
+    private int ballonCount;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -69,6 +82,9 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         ballons = new GameObject[maxBallonCount];
+
+        btnJump.onClick.AddListener(OnClickJump);
+        btnDetach.onClick.AddListener(OnClickDetachOrGenerate);
 
         scale = transform.localScale.x;
     }
@@ -128,8 +144,14 @@ public class PlayerController : MonoBehaviour
     }
     void Move()
     {
+#if UNITY_EDITOR
         float x = Input.GetAxis(horizontal);
+        x = joystick.Horizontal;
+#else
+        float x = joystick.Horizontal;
+#endif
 
+        
         if (x != 0)
         {
             rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
@@ -198,6 +220,9 @@ public class PlayerController : MonoBehaviour
 
             ballons[1].GetComponent<Ballon>().SetUpBallon(this);
         }
+
+        ballonCount++;
+
         yield return new WaitForSeconds(generateTime);
 
         isGenerating = false;
@@ -228,7 +253,8 @@ public class PlayerController : MonoBehaviour
         else if (ballons[0] != null)
         {
             Destroy(ballons[0]);
-        } 
+        }
+        ballonCount--;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -257,5 +283,21 @@ public class PlayerController : MonoBehaviour
         Debug.Log(isGameOver);
 
         uiManager.DisplayGameOverInfo();
+    }
+
+    private void OnClickJump()
+    {
+        if (ballonCount > 0)
+        {
+            Jump();
+        }
+    }
+
+    private void OnClickDetachOrGenerate()
+    {
+        if(isGrounded==true && ballonCount<maxBallonCount && isGenerating == false)
+        {
+            StartCoroutine(GenerateBallon());
+        }
     }
 }
