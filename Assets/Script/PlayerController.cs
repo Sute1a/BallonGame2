@@ -50,6 +50,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private StartChecker startChecker;
 
+    [SerializeField]
+    private AudioClip knockbackSE;
+
+    [SerializeField]
+    private GameObject knockbackeffectPrefab;
+
+    [SerializeField]
+    private AudioClip getCoinSE;
+
+    [SerializeField]
+    private GameObject getCoineffectPrefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -198,6 +210,13 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = (transform.position - col.transform.position).normalized;
 
             transform.position += direction * knockbackPower;
+
+            AudioSource.PlayClipAtPoint(knockbackSE, transform.position);
+
+            GameObject knockbackEffect = Instantiate(knockbackeffectPrefab,
+                col.transform.position, Quaternion.identity);
+
+            Destroy(knockbackEffect, 0.5f);
         }
     }
     public void DestroyBallon()
@@ -220,7 +239,14 @@ public class PlayerController : MonoBehaviour
 
             uiManager.UpdateDisplayScore(coinPoint);
 
+            AudioSource.PlayClipAtPoint(getCoinSE, transform.position);
+
+            GameObject getCoineffct = Instantiate(getCoineffectPrefab,
+                col.transform.position, Quaternion.identity);
+
             Destroy(col.gameObject);
+
+            Destroy(getCoineffct, 0.5f);
         }    
     }
 

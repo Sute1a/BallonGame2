@@ -1598,6 +1598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116f38fb8660f4c56ac4275db28e4693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 60542106}
 --- !u!61 &759924973
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2268,6 +2269,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   startChecker: {fileID: 938116017}
+  knockbackSE: {fileID: 8300000, guid: d14c421a7a7fb49b1b4c5279febfdc86, type: 3}
+  knockbackeffectPrefab: {fileID: 1845240806346120, guid: b395d5d6eb4b4b846acc021ee036b744, type: 3}
+  getCoinSE: {fileID: 8300000, guid: dbfefccff02df4881a397b4d8ac4214c, type: 3}
+  getCoineffectPrefab: {fileID: 100000, guid: 1bc4a709f24528b40984e62f32e398a0, type: 3}
 --- !u!1 &1351412208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1385549284409674, guid: 486f42fcb063b4b4fa79b395c40825eb, type: 3}
