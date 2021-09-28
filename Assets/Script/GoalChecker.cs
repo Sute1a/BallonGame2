@@ -13,6 +13,9 @@ public class GoalChecker : MonoBehaviour
 
     private GameDirector gameDirector;
 
+    [SerializeField]
+    private GameObject secretfloorObj;
+
     void Update()
     {
         if (transform.position.x > stopPos)
@@ -35,11 +38,18 @@ public class GoalChecker : MonoBehaviour
             playerController.uiManager.GenerateResultPopUp(playerController.coinPoint);
 
             gameDirector.GoalClear();
+
+            secretfloorObj.SetActive(true);
+
+            secretfloorObj.transform.DOLocalMoveY(0.45f, 2.5f).
+                SetEase(Ease.Linear).SetRelative();
         }
     }
 
     public void SetUpGoalHouse(GameDirector gameDirector)
     {
         this.gameDirector = gameDirector;
+
+        secretfloorObj.SetActive(false);
     }
 }
